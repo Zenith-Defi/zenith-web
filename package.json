@@ -19,7 +19,7 @@
     "test:install": "playwright install --with-deps chromium"
   },
   "dependencies": {
-    "@zenithpay/sdk": "github:Elizabethxxx/zenith-sdk",
+    "@zenithpay/sdk": "github:Zenith-Defi/zenith-sdk",
     "clsx": "^2.1.1",
     "lucide-react": "^0.469.0",
     "next": "14.2.15",

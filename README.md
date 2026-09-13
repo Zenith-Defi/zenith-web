@@ -1,11 +1,11 @@
 # zenith-web
 
-The hosted checkout page and merchant dashboard for [Zenith](https://github.com/Elizabethxxx/zenith-api), a non-custodial crypto checkout on Stellar. A customer pays an invoice on `/pay/:invoiceId`; a merchant manages invoices, payments, API keys and webhooks in the dashboard.
+The hosted checkout page and merchant dashboard for [Zenith](https://github.com/Zenith-Defi/zenith-api), a non-custodial crypto checkout on Stellar. A customer pays an invoice on `/pay/:invoiceId`; a merchant manages invoices, payments, API keys and webhooks in the dashboard.
 
 This is the application layer of a three-repository project.
 
-- [zenith-api](https://github.com/Elizabethxxx/zenith-api) — the REST API.
-- [zenith-sdk](https://github.com/Elizabethxxx/zenith-sdk) — the TypeScript client.
+- [zenith-api](https://github.com/Zenith-Defi/zenith-api) — the REST API.
+- [zenith-sdk](https://github.com/Zenith-Defi/zenith-sdk) — the TypeScript client.
 - **zenith-web** (this repo) — this app. It talks to the API only through the SDK.
 
 Dependencies point one way: api, then sdk, then web. This app never calls the API with a raw `fetch` and never re-implements SDK logic. See [docs/multi-repo.md](docs/multi-repo.md).
@@ -18,7 +18,7 @@ Next.js App Router, TypeScript, Tailwind CSS, and small shadcn-style UI componen
 
 - Node 20 or newer
 - pnpm 9
-- A running [zenith-api](https://github.com/Elizabethxxx/zenith-api) with a seeded API key
+- A running [zenith-api](https://github.com/Zenith-Defi/zenith-api) with a seeded API key
 
 ## Quickstart
 

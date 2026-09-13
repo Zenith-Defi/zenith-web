@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@zenithpay/sdk':
-        specifier: github:Elizabethxxx/zenith-sdk
-        version: https://codeload.github.com/Elizabethxxx/zenith-sdk/tar.gz/d56bc9dc384f4eed55a2aa130b5900b19140c589
+        specifier: github:Zenith-Defi/zenith-sdk
+        version: https://codeload.github.com/Zenith-Defi/zenith-sdk/tar.gz/573300f6ce3dd7fdf407081095b0d09a12c2f51e
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -438,8 +438,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@zenithpay/sdk@https://codeload.github.com/Elizabethxxx/zenith-sdk/tar.gz/d56bc9dc384f4eed55a2aa130b5900b19140c589':
-    resolution: {tarball: https://codeload.github.com/Elizabethxxx/zenith-sdk/tar.gz/d56bc9dc384f4eed55a2aa130b5900b19140c589}
+  '@zenithpay/sdk@https://codeload.github.com/Zenith-Defi/zenith-sdk/tar.gz/573300f6ce3dd7fdf407081095b0d09a12c2f51e':
+    resolution: {tarball: https://codeload.github.com/Zenith-Defi/zenith-sdk/tar.gz/573300f6ce3dd7fdf407081095b0d09a12c2f51e}
     version: 0.1.0-rc.1
     engines: {node: '>=20'}
 
@@ -2348,7 +2348,7 @@ snapshots:
   '@unrs/resolver-binding-win32-x64-msvc@1.12.2':
     optional: true
 
-  '@zenithpay/sdk@https://codeload.github.com/Elizabethxxx/zenith-sdk/tar.gz/d56bc9dc384f4eed55a2aa130b5900b19140c589': {}
+  '@zenithpay/sdk@https://codeload.github.com/Zenith-Defi/zenith-sdk/tar.gz/573300f6ce3dd7fdf407081095b0d09a12c2f51e': {}
 
   acorn-jsx@5.3.2(acorn@8.18.0):
     dependencies:

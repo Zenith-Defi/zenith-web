@@ -6,8 +6,8 @@ Thanks for helping build the Zenith app. This gets you from a cold clone to a us
 
 Zenith is a non-custodial crypto checkout on Stellar: a merchant creates an invoice, a customer pays it, and the money lands in the merchant's own account. This repository is the app: the public checkout page and the merchant dashboard.
 
-- **[zenith-api](https://github.com/Elizabethxxx/zenith-api)** — the REST API.
-- **[zenith-sdk](https://github.com/Elizabethxxx/zenith-sdk)** — the TypeScript client this app uses.
+- **[zenith-api](https://github.com/Zenith-Defi/zenith-api)** — the REST API.
+- **[zenith-sdk](https://github.com/Zenith-Defi/zenith-sdk)** — the TypeScript client this app uses.
 - **zenith-web** (you are here) — the checkout page and dashboard.
 
 Dependencies point one way: api, then sdk, then web, never reversed. This app talks to the API only through the SDK. If the app needs something the SDK cannot do, the fix goes in the SDK, not a raw `fetch` here. The cross-repository rules are in [docs/multi-repo.md](docs/multi-repo.md).
@@ -49,10 +49,10 @@ tests/checkout.spec.ts       opt-in end-to-end paid-invoice flow
 
 ## Getting set up
 
-Prerequisites: Node 20 or newer, pnpm 9 (`corepack enable`). You also need [zenith-api](https://github.com/Elizabethxxx/zenith-api) running locally with a seeded API key; its README has the steps, and you do not need to deploy anything of your own.
+Prerequisites: Node 20 or newer, pnpm 9 (`corepack enable`). You also need [zenith-api](https://github.com/Zenith-Defi/zenith-api) running locally with a seeded API key; its README has the steps, and you do not need to deploy anything of your own.
 
 ```bash
-git clone https://github.com/Elizabethxxx/zenith-web
+git clone https://github.com/Zenith-Defi/zenith-web
 cd zenith-web
 pnpm install
 cp .env.example .env
