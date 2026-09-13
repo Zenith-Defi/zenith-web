@@ -33,7 +33,7 @@ export default async function InvoiceDetail({ params }: { params: { id: string }
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <Link href="/dashboard" className="text-sm text-muted-foreground hover:text-foreground">
-            ← Invoices
+            Back to invoices
           </Link>
           <h1 className="text-2xl font-semibold">Invoice {invoice.id}</h1>
           <StatusBadge status={invoice.status} />

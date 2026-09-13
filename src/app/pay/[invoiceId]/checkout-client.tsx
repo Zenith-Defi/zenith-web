@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { QRCodeSVG } from "qrcode.react";
+import { Check } from "lucide-react";
 import { stellarPayUri, type Invoice } from "@zenithpay/sdk/browser";
 import { formatAmount, formatStroops } from "@/lib/format";
 import { Card, CardContent } from "@/components/ui/card";
@@ -73,8 +74,8 @@ export function CheckoutClient({ invoiceId, apiUrl }: { invoiceId: string; apiUr
 
         {paid ? (
           <div className="flex flex-col items-center gap-2 py-6">
-            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-success/15 text-2xl text-success">
-              ✓
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-success/15 text-success">
+              <Check className="h-7 w-7" />
             </div>
             <p className="text-lg font-medium">Payment received</p>
             <p className="text-sm text-muted-foreground">You can close this page.</p>
