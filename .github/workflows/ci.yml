@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm typecheck
+      # Playwright's end-to-end flow is opt-in via ZENITH_E2E and skips here, so
+      # this runs without the stack or a browser download.
+      - run: pnpm test
+      - run: pnpm build
+        env:
+          ZENITH_API_URL: http://localhost:8787
+          NEXT_PUBLIC_ZENITH_API_URL: http://localhost:8787
+          NEXT_PUBLIC_CHECKOUT_BASE_URL: http://localhost:3000
