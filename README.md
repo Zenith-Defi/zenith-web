@@ -63,6 +63,18 @@ ZENITH_E2E=1 ZENITH_API_KEY=zk_test_... pnpm test
 
 Without `ZENITH_E2E=1` the test skips, so CI stays green without the stack.
 
+## Deploying to Vercel
+
+The repo is a standard Next.js App Router project at the repository root, so Vercel's defaults apply: build command `pnpm build`, output handled by the Next.js framework preset, and no root directory override (leave it as the repo root). No `vercel.json` is needed.
+
+The app needs a reachable zenith-api instance; a Vercel deployment pointed at `http://localhost:8787` will not work. Deploy zenith-api somewhere public first, then set these environment variables in the Vercel project:
+
+- `ZENITH_API_URL` — the deployed zenith-api base URL, used by server-side SDK calls.
+- `NEXT_PUBLIC_ZENITH_API_URL` — the same URL, exposed to the browser for the SSE stream.
+- `NEXT_PUBLIC_CHECKOUT_BASE_URL` — this app's own public URL (the Vercel domain), used to build checkout links.
+
+The two `NEXT_PUBLIC_*` values are inlined into the client bundle at build time, so set them before the first build and redeploy after changing either one.
+
 ## Status
 
 Built to roughly 65%. Working: the public checkout page with QR, copy-address, wallet deep link and live status; and the dashboard with invoices (list, detail, create, cancel), payments, API key create and revoke, webhook endpoints with their delivery log and replay, and settings. Login is via API key. Not built and filed in [ISSUES.md](ISSUES.md): magic-link email login, refunds and settlement screens, the embeddable widget, i18n and a full accessibility pass.
