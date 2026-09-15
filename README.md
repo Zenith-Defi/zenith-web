@@ -10,6 +10,10 @@ This is the application layer of a three-repository project.
 
 Dependencies point one way: api, then sdk, then web. This app never calls the API with a raw `fetch` and never re-implements SDK logic. See [docs/multi-repo.md](docs/multi-repo.md).
 
+## Try it
+
+A hosted demo runs at https://zenith-web-seven-virid.vercel.app. Sign in with the public demo API key `zk_test_publicdemo0000000000000000` to see the dashboard for a shared demo merchant: browse invoices and payments, create a Testnet invoice, and open its checkout page to watch the status update over the live stream. Everything is on Stellar Testnet, so no real money moves. The key is published on purpose and is shared by everyone; do not treat the demo account as private.
+
 ## Stack
 
 Next.js App Router, TypeScript, Tailwind CSS, and small shadcn-style UI components. The SDK is consumed as `@zenithpay/sdk`.
@@ -67,17 +71,18 @@ Without `ZENITH_E2E=1` the test skips, so CI stays green without the stack.
 
 The repo is a standard Next.js App Router project at the repository root, so Vercel's defaults apply: build command `pnpm build`, output handled by the Next.js framework preset, and no root directory override (leave it as the repo root). No `vercel.json` is needed.
 
-The app needs a reachable zenith-api instance; a Vercel deployment pointed at `http://localhost:8787` will not work. Deploy zenith-api somewhere public first, then set these environment variables in the Vercel project:
+The app needs a reachable zenith-api instance; a Vercel deployment pointed at `http://localhost:8787` will not work. Deploy zenith-api somewhere public first (see its README), then set these environment variables in the Vercel project:
 
-- `ZENITH_API_URL` — the deployed zenith-api base URL, used by server-side SDK calls.
-- `NEXT_PUBLIC_ZENITH_API_URL` — the same URL, exposed to the browser for the SSE stream.
-- `NEXT_PUBLIC_CHECKOUT_BASE_URL` — this app's own public URL (the Vercel domain), used to build checkout links.
+- `ZENITH_API_URL` — the deployed zenith-api base URL. Server-side SDK calls use it, and the checkout page reads it at request time to pass to the browser for the SSE stream. It is read at runtime, so changing it takes effect on redeploy without rebuilding, and no localhost value is baked into the client bundle.
+- `CHECKOUT_BASE_URL` — this app's own public URL (the Vercel domain), used to build checkout links.
 
-The two `NEXT_PUBLIC_*` values are inlined into the client bundle at build time, so set them before the first build and redeploy after changing either one.
+Set both before the first deploy. The checkout page is rendered per request, so the API URL always reflects the current environment value rather than a build-time snapshot.
 
 ## Status
 
 Built to roughly 65%. Working: the public checkout page with QR, copy-address, wallet deep link and live status; and the dashboard with invoices (list, detail, create, cancel), payments, API key create and revoke, webhook endpoints with their delivery log and replay, and settings. Login is via API key. Not built and filed in [ISSUES.md](ISSUES.md): magic-link email login, refunds and settlement screens, the embeddable widget, i18n and a full accessibility pass.
+
+Deployed on Vercel at https://zenith-web-seven-virid.vercel.app, talking to a zenith-api instance on Render. Everything runs on Stellar Testnet only.
 
 Unaudited and Testnet-only. See [SECURITY.md](SECURITY.md).
 
